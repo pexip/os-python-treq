@@ -1,0 +1,13 @@
+Source: python-treq
+Section: python
+Priority: extra
+Maintainer: Pexip AS <packaging@pexip.com>
+Build-Depends: debhelper (>= 8.0.0), dh-python,
+ python-all (>= 2.7), python-setuptools
+Standards-Version: 3.9.2
+Homepage: https://github.com/twisted/treq
+
+Package: python-treq
+Architecture: all
+Depends: ${python:Depends} ${misc:Depends}
+Description: Python requests like API built on top of Twisted's HTTP client.
