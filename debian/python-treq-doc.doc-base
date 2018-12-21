@@ -1,0 +1,9 @@
+Document: python-treq-doc
+Title: Treq User Documentation
+Author: David Reid
+Abstract: Treq is a higher level API for making HTTP requests with Twisted
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/python-treq-doc/html/index.html
+Files: /usr/share/doc/python-treq-doc/html/*.html

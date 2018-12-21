@@ -1,14 +1,66 @@
 Source: python-treq
 Section: python
-Priority: extra
-Maintainer: Pexip AS <packaging@pexip.com>
-Build-Depends: debhelper (>= 8.0.0), dh-python,
- python-all (>= 2.7), python-setuptools, python-twisted, python-mock
-Standards-Version: 3.9.2
-Homepage: https://github.com/twisted/treq
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
+Priority: optional
+Maintainer: Orestis Ioannou <orestis@oioannou.com>
+Build-Depends:
+ debhelper (>= 9),
+ dh-python,
+ python-all,
+ python-attr,
+ python-incremental,
+ python-openssl,
+ python-requests (>= 2.1.0),
+ python-service-identity,
+ python-setuptools,
+ python-six,
+ python-sphinx,
+ python-twisted (>= 16.4.0),
+ python3-all,
+ python3-attr,
+ python3-incremental,
+ python3-openssl (>= 0.15.1),
+ python3-requests (>= 2.1.0),
+ python3-service-identity,
+ python3-setuptools,
+ python3-six,
+ python3-twisted (>= 16.4.0),
+Standards-Version: 3.9.8
+Homepage: http://treq.readthedocs.org/en/latest/
+Vcs-Git: https://salsa.debian.org/python-team/modules/python-treq.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/python-treq
 
 Package: python-treq
 Architecture: all
-Depends: ${python:Depends} ${misc:Depends}
-Description: Python requests like API built on top of Twisted's HTTP client.
+Depends:
+ ${misc:Depends},
+ ${python:Depends},
+Description: Higher level API for making HTTP requests with Twisted (Python 2)
+ Treq is a HTTP library inspired by requests written on top of Twisted.
+ It provides a simple, higher level API for making HTTP requests when using
+ Twisted.
+ .
+ This is the Python 2 package.
+
+Package: python3-treq
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+Description: Higher level API for making HTTP requests with Twisted (Python 3)
+ Treq is a HTTP library inspired by requests written on top of Twisted.
+ It provides a simple, higher level API for making HTTP requests when using
+ Twisted.
+ .
+ This is the Python 3 package.
+
+Package: python-treq-doc
+Architecture: all
+Depends:
+ ${misc:Depends},
+Section: doc
+Description: Higher level API for making HTTP requests with Twisted (doc)
+ Treq is a HTTP library inspired by requests written on top of Twisted.
+ It provides a simple, higher level API for making HTTP requests when using
+ Twisted.
+ .
+ This package contains the HTML documentation.

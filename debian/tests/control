@@ -1,0 +1,5 @@
+Test-Command: trial treq/test
+Depends: python-mock, python-requests, python-twisted
+
+Test-Command: trial3 treq/test
+Depends: python3-mock, python3-requests, python3-twisted
