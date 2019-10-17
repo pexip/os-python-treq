@@ -1,3 +1,10 @@
+python-treq (18.6.0-0.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop python2 support; Closes: #938226
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 17 Oct 2019 18:18:22 -0400
+
 python-treq (18.6.0-0.1) unstable; urgency=medium
 
   * Non-maintainer upload.
