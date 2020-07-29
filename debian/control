@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 8.0.0), dh-python,
  python-all (>= 2.7), python-setuptools, python-twisted, python-mock
 Standards-Version: 3.9.2
 Homepage: https://github.com/twisted/treq
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: python-treq
 Architecture: all
