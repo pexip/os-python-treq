@@ -1,3 +1,9 @@
+python-treq (18.6.0-0.1pexip2) pexip; urgency=medium
+
+  * Add XS-Pexip-Upstream flag.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 07 Feb 2022 10:32:23 +0000
+
 python-treq (18.6.0-0.1pexip1) unstable; urgency=medium
 
   * Switch to using current Debian Buster code
