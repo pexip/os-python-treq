@@ -3,7 +3,7 @@
 export PYBUILD_NAME=treq
 
 %:
-	dh $@ --with sphinxdoc,python2,python3 --buildsystem=pybuild
+	dh $@ --with sphinxdoc,python3 --buildsystem=pybuild
 
 override_dh_auto_build:
 	$(MAKE) -C docs html PYTHONPATH=$(CURDIR)/src

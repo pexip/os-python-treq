@@ -6,16 +6,7 @@ XBSC-Pexip-Original-Maintainer: Orestis Ioannou <orestis@oioannou.com>
 Build-Depends:
  debhelper (>= 9),
  dh-python,
- python-all,
- python-attr,
- python-incremental,
- python-openssl,
- python-requests (>= 2.1.0),
- python-service-identity,
- python-setuptools,
- python-six,
- python-sphinx,
- python-twisted (>= 16.4.0),
+ python3-sphinx,
  python3-all,
  python3-attr,
  python3-incremental,
@@ -30,18 +21,6 @@ Homepage: http://treq.readthedocs.org/en/latest/
 Vcs-Git: https://salsa.debian.org/python-team/modules/python-treq.git
 Vcs-Browser: https://salsa.debian.org/python-team/modules/python-treq
 XS-Pexip-Upstream: http://ftp.debian.org/debian/ bullseye
-
-Package: python-treq
-Architecture: all
-Depends:
- ${misc:Depends},
- ${python:Depends},
-Description: Higher level API for making HTTP requests with Twisted (Python 2)
- Treq is a HTTP library inspired by requests written on top of Twisted.
- It provides a simple, higher level API for making HTTP requests when using
- Twisted.
- .
- This is the Python 2 package.
 
 Package: python3-treq
 Architecture: all
