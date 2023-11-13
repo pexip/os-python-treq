@@ -1,3 +1,20 @@
+python-treq (22.2.0-0.1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Andrej Shadura ]
+  * New upstream release.
+  * Use dh-sequence-python3.
+  * Use debhelper-compat 13.
+  * Set Standards-Version: 4.6.0.
+  * Set Rules-Requires-Root: no.
+  * Update dependencies.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Wed, 16 Feb 2022 14:20:46 +0100
+
 python-treq (18.6.0-0.2pexip3) pexip-bullseye; urgency=medium
 
   * Bullseye rebuild for ARM64 inclusion

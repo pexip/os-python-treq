@@ -4,22 +4,24 @@ Priority: optional
 Maintainer: Pexip AS <packaging@pexip.com>
 XBSC-Pexip-Original-Maintainer: Orestis Ioannou <orestis@oioannou.com>
 Build-Depends:
- debhelper (>= 9),
- dh-python,
+ debhelper-compat (= 13),
+ dh-sequence-python3,
  python3-sphinx,
  python3-all,
  python3-attr,
+ python3-hyperlink (>= 21.0.0),
  python3-incremental,
  python3-openssl (>= 0.15.1),
  python3-requests (>= 2.1.0),
  python3-service-identity,
  python3-setuptools,
  python3-six,
- python3-twisted (>= 16.4.0),
-Standards-Version: 3.9.8
+ python3-twisted (>= 18.7.0),
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
 Homepage: http://treq.readthedocs.org/en/latest/
-Vcs-Git: https://salsa.debian.org/python-team/modules/python-treq.git
-Vcs-Browser: https://salsa.debian.org/python-team/modules/python-treq
+Vcs-Git: https://salsa.debian.org/python-team/packages/python-treq.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/python-treq
 XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: python3-treq
