@@ -1,10 +1,12 @@
 Source: python-treq
 Section: python
 Priority: optional
-Maintainer: Orestis Ioannou <orestis@oioannou.com>
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Orestis Ioannou <orestis@oioannou.com>,
 Build-Depends:
  debhelper-compat (= 13),
  dh-sequence-python3,
+ pybuild-plugin-pyproject,
  python3-sphinx,
  python3-all,
  python3-attr,
@@ -14,8 +16,8 @@ Build-Depends:
  python3-requests (>= 2.1.0),
  python3-service-identity,
  python3-setuptools,
- python3-six,
  python3-twisted (>= 18.7.0),
+ python3-typing-extensions,
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
 Homepage: http://treq.readthedocs.org/en/latest/
@@ -38,6 +40,9 @@ Package: python-treq-doc
 Architecture: all
 Depends:
  ${misc:Depends},
+ ${sphinxdoc:Depends},
+Built-Using:
+ ${sphinxdoc:Built-Using},
 Section: doc
 Description: Higher level API for making HTTP requests with Twisted (doc)
  Treq is a HTTP library inspired by requests written on top of Twisted.

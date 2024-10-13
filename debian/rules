@@ -5,9 +5,8 @@ export PYBUILD_NAME=treq
 %:
 	dh $@ --with sphinxdoc --buildsystem=pybuild
 
-override_dh_auto_build:
+execute_before_dh_auto_build:
 	$(MAKE) -C docs html PYTHONPATH=$(CURDIR)/src
-	dh_auto_build
 
 override_dh_auto_test:
 	# tests require internet access so they are disabled

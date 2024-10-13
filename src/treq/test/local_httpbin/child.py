@@ -8,7 +8,7 @@ import argparse
 import datetime
 import sys
 
-import httpbin
+import httpbin  # type: ignore
 
 from twisted.internet.defer import Deferred, inlineCallbacks
 from twisted.internet.endpoints import TCP4ServerEndpoint, SSL4ServerEndpoint
