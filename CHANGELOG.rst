@@ -8,6 +8,77 @@ Changelog
 
 .. towncrier release notes start
 
+24.9.1 (2024-09-19)
+===================
+
+Bugfixes
+--------
+
+- treq has vendored its dependency on the ``multipart`` library to avoid import
+  conflicts with ``python-multipart``; it should now be installable alongside
+  that library. (`#399 <https://github.com/twisted/treq/issues/399>`__)
+
+
+24.9.0 (2024-09-17)
+===================
+
+Features
+--------
+
+- treq now ships type annotations. (`#366 <https://github.com/twisted/treq/issues/366>`__)
+- The new :mod:`treq.cookies` module provides helper functions for working with `http.cookiejar.Cookie` and `CookieJar` objects. (`#384 <https://github.com/twisted/treq/issues/384>`__)
+- Python 3.13 is now supported. (`#391 <https://github.com/twisted/treq/issues/391>`__)
+
+
+Bugfixes
+--------
+
+- :mod:`treq.content.text_content()` no longer generates deprecation warnings due to use of the ``cgi`` module. (`#355 <https://github.com/twisted/treq/issues/355>`__)
+
+
+Deprecations and Removals
+-------------------------
+
+- Mixing the *json* argument with *files* or *data* now raises `TypeError`. (`#297 <https://github.com/twisted/treq/issues/297>`__)
+- Passing non-string (`str` or `bytes`) values as part of a dict to the *headers* argument now results in a `TypeError`, as does passing any collection other than a `dict` or `Headers` instance. (`#302 <https://github.com/twisted/treq/issues/302>`__)
+- Support for Python 3.7 and PyPy 3.8, which have reached end of support, has been dropped. (`#378 <https://github.com/twisted/treq/issues/378>`__)
+
+
+Misc
+----
+
+- `#336 <https://github.com/twisted/treq/issues/336>`__, `#382 <https://github.com/twisted/treq/issues/382>`__, `#395 <https://github.com/twisted/treq/issues/395>`__
+
+
+23.11.0 (2023-11-03)
+====================
+
+Features
+--------
+
+- When the collector passed to ``treq.collect(response, collector)`` throws an exception, that error will now be returned to the caller of ``collect()`` via the result ``Deferred``, and the underlying HTTP transport will be closed. (`#347 <https://github.com/twisted/treq/issues/347>`__)
+- Python 3.11 is now supported. (`#364 <https://github.com/twisted/treq/issues/364>`__)
+- Python 3.12 is now supported. (`#375 <https://github.com/twisted/treq/issues/375>`__)
+- PyPy 3.9 is now supported. (`#365 <https://github.com/twisted/treq/issues/365>`__)
+- PyPy 3.10 is now supported. (`#374 <https://github.com/twisted/treq/issues/374>`__)
+
+
+Deprecations and Removals
+-------------------------
+
+- The minimum supported Twisted version has increased to 22.10.0. Older versions are no longer tested in CI. (`#374 <https://github.com/twisted/treq/issues/374>`__)
+- Support for Python 3.6, which has reached end of support, has been dropped. (`#363 <https://github.com/twisted/treq/issues/363>`__)
+- Support for Python 3.7, which reaches end of support 2023-06-27, is deprecated. This is the last release with support for Python 3.7. (`#361 <https://github.com/twisted/treq/issues/361>`__)
+- Support for PyPy 3.7, which has reached end of support, has been removed. (`#365 <https://github.com/twisted/treq/issues/365>`__)
+- Support for PyPy 3.8, which has reached end of support, is deprecated. This is the last release with support for PyPy 3.8. (`#374 <https://github.com/twisted/treq/issues/374>`__)
+
+
+Misc
+----
+
+- `#349 <https://github.com/twisted/treq/issues/349>`__, `#350 <https://github.com/twisted/treq/issues/350>`__, `#352 <https://github.com/twisted/treq/issues/352>`__
+
+
 22.2.0 (2022-02-08)
 ===================
 

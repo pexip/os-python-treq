@@ -1,2 +1,6 @@
-Test-Command: trial3 treq/test
-Depends: python3-mock, python3-requests, python3-twisted
+Test-Command: trial3 treq.test
+Depends:
+ @,
+ python3-httpbin,
+ python3-requests,
+ python3-twisted,

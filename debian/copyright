@@ -7,8 +7,12 @@ Copyright: 2012-2014 David Reid <dreid@dreid.org>,
            Amber Brown <hawkowl@twistedmatrix.com>
 License: MIT
 
-Files: treq/multipart.py
- treq/test/test_multipart.py
+Files: src/treq/_multipart.py
+Copyright: 2010 Marcel Hellkamp
+License: MIT
+
+Files: src/treq/multipart.py
+ src/treq/test/test_multipart.py
 Copyright: Twisted Matrix Laboratories
 License: MIT
 

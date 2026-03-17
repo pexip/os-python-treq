@@ -1,36 +1,42 @@
-from twisted.python.components import proxyForInterface
-from twisted.web.iweb import IResponse, UNKNOWN_LENGTH
-from twisted.python import reflect
-
+from typing import Any, Callable, List
 from requests.cookies import cookiejar_from_dict
+from http.cookiejar import CookieJar
+from twisted.internet.defer import Deferred
+from twisted.python import reflect
+from twisted.python.components import proxyForInterface
+from twisted.web.iweb import UNKNOWN_LENGTH, IResponse
 
 from treq.content import collect, content, json_content, text_content
 
 
-class _Response(proxyForInterface(IResponse)):
+class _Response(proxyForInterface(IResponse)):  # type: ignore
     """
     A wrapper for :class:`twisted.web.iweb.IResponse` which manages cookies and
     adds a few convenience methods.
     """
 
-    def __init__(self, original, cookiejar):
+    original: IResponse
+    _cookiejar: CookieJar
+
+    def __init__(self, original: IResponse, cookiejar: CookieJar):
         self.original = original
         self._cookiejar = cookiejar
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Generate a representation of the response which includes the HTTP
         status code, Content-Type header, and body size, if available.
         """
         if self.original.length == UNKNOWN_LENGTH:
-            size = 'unknown size'
+            size = "unknown size"
         else:
-            size = '{:,d} bytes'.format(self.original.length)
+            size = "{:,d} bytes".format(self.original.length)
         # Display non-ascii bits of the content-type header as backslash
         # escapes.
-        content_type_bytes = b', '.join(
-            self.original.headers.getRawHeaders(b'content-type', ()))
-        content_type = repr(content_type_bytes).lstrip('b')[1:-1]
+        content_type_bytes = b", ".join(
+            self.original.headers.getRawHeaders(b"content-type", ())
+        )
+        content_type = repr(content_type_bytes).lstrip("b")[1:-1]
         return "<{} {} '{:.40s}' {}>".format(
             reflect.qual(self.__class__),
             self.original.code,
@@ -38,7 +44,7 @@ class _Response(proxyForInterface(IResponse)):
             size,
         )
 
-    def collect(self, collector):
+    def collect(self, collector: Callable[[bytes], None]) -> "Deferred[None]":
         """
         Incrementally collect the body of the response, per
         :func:`treq.collect()`.
@@ -51,7 +57,7 @@ class _Response(proxyForInterface(IResponse)):
         """
         return collect(self.original, collector)
 
-    def content(self):
+    def content(self) -> "Deferred[bytes]":
         """
         Read the entire body all at once, per :func:`treq.content()`.
 
@@ -60,7 +66,7 @@ class _Response(proxyForInterface(IResponse)):
         """
         return content(self.original)
 
-    def json(self, **kwargs):
+    def json(self, **kwargs: Any) -> "Deferred[Any]":
         """
         Collect the response body as JSON per :func:`treq.json_content()`.
 
@@ -71,7 +77,7 @@ class _Response(proxyForInterface(IResponse)):
         """
         return json_content(self.original, **kwargs)
 
-    def text(self, encoding='ISO-8859-1'):
+    def text(self, encoding: str = "ISO-8859-1") -> "Deferred[str]":
         """
         Read the entire body all at once as text, per
         :func:`treq.text_content()`.
@@ -81,35 +87,33 @@ class _Response(proxyForInterface(IResponse)):
         """
         return text_content(self.original, encoding)
 
-    def history(self):
+    def history(self) -> "List[_Response]":
         """
         Get a list of all responses that (such as intermediate redirects),
         that ultimately ended in the current response. The responses are
         ordered chronologically.
-
-        :returns: A `list` of :class:`~treq.response._Response` objects
         """
         response = self
         history = []
 
         while response.previousResponse is not None:
-            history.append(_Response(response.previousResponse,
-                                     self._cookiejar))
+            history.append(_Response(response.previousResponse, self._cookiejar))
             response = response.previousResponse
 
         history.reverse()
         return history
 
-    def cookies(self):
+    def cookies(self) -> CookieJar:
         """
         Get a copy of this response's cookies.
-
-        :rtype: :class:`requests.cookies.RequestsCookieJar`
         """
-        jar = cookiejar_from_dict({})
+        # NB: This actually returns a RequestsCookieJar, but we type it as a
+        # regular CookieJar because we want to ditch requests as a dependency.
+        # Full deprecation deprecation will require a subclass or wrapper that
+        # warns about the RequestCookieJar extensions.
+        jar: CookieJar = cookiejar_from_dict({})
 
-        if self._cookiejar is not None:
-            for cookie in self._cookiejar:
-                jar.set_cookie(cookie)
+        for cookie in self._cookiejar:
+            jar.set_cookie(cookie)
 
         return jar
